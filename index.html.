@@ -1,4 +1,4 @@
-op<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
     <title>Mobile Pen Fight</title>
@@ -40,3 +40,4 @@ op<!DOCTYPE html>
                     this.x += Math.cos(this.angle) * this.speed;
                     this.y += Math.sin(this.angle) * this.speed;
                     this.
+
