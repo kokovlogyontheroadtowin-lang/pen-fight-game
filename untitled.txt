@@ -1,0 +1,42 @@
+op<!DOCTYPE html>
+<html>
+<head>
+    <title>Mobile Pen Fight</title>
+    <style>
+        body { margin: 0; overflow: hidden; background: #222; font-family: sans-serif; }
+        canvas { display: block; background: #f0f0f0; margin: auto; }
+        #ui { position: absolute; top: 10px; width: 100%; text-align: center; color: white; pointer-events: none; }
+    </style>
+</head>
+<body>
+    <div id="ui">Player 1: <span id="s1">0</span> | Player 2: <span id="s2">0</span></div>
+    <canvas id="gameCanvas"></canvas>
+
+    <script>
+        const canvas = document.getElementById('gameCanvas');
+        const ctx = canvas.getContext('2d');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        let scores = [0, 0];
+
+        class Pen {
+            constructor(x, y, color, isPlayer1) {
+                this.originX = x;
+                this.originY = y;
+                this.x = x; 
+                this.y = y;
+                this.color = color;
+                this.angle = 0;
+                this.speed = 0;
+                this.state = 'rotating'; // states: rotating, moving, returning
+                this.isPlayer1 = isPlayer1;
+            }
+
+            update() {
+                if (this.state === 'rotating') {
+                    this.angle += 0.1; // Rotation speed
+                } else if (this.state === 'moving') {
+                    this.x += Math.cos(this.angle) * this.speed;
+                    this.y += Math.sin(this.angle) * this.speed;
+                    this.
